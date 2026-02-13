@@ -7,6 +7,10 @@ A tiny, static site for the tac0de philosophy.
 
 This site is intentionally simple.
 
+## Live demo
+
+GitHub Pages: https://tac0de.github.io/divineparadox/
+
 ## tac0de-cascade (static attachment)
 
 This site includes a pre-generated tac0de-cascade trace under `assets/tac0de/`.
