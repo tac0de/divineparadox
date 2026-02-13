@@ -3,78 +3,164 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>divine paradox</title>
+    <title>divineparadox | TRACE</title>
+    <meta
+      name="description"
+      content="divineparadox TRACE: research notes + reproducible tac0de-cascade protocol traces (static, JSON in/out)."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;650&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <main class="wrap">
-      <header class="hero">
-        <h1>divine paradox</h1>
-        <p class="sub">
-          A quiet place for a simple idea: thinking should be deeper than
-          output. AI is not a moral authority. It is a mirror that helps humans
-          think.
-        </p>
-        <p class="sub">
-          Emotions are not bugs. Dignity is not optional. Conclusions can wait.
-        </p>
-        <div class="links">
-          <a href="#" aria-label="tac0de-cascade repository">tac0de-cascade</a>
-          <a href="#" aria-label="mastermind repository">mastermind</a>
-          <a href="#" aria-label="ethics">ETHICS</a>
+      <header class="topbar">
+        <div class="brand">
+          <span class="badge badge-strong">TRACE</span>
+          <a class="brand-name" href="#top" aria-label="divineparadox home">divineparadox</a>
         </div>
-        <p class="note">
-          This project is reflection-first. It is not built to persuade,
-          manipulate, or control people.
-        </p>
+        <nav class="nav">
+          <a href="#problem">Problem</a>
+          <a href="#protocol">tac0de Protocol</a>
+          <a href="#trace">Trace</a>
+          <a href="#links">Links</a>
+        </nav>
       </header>
 
-      <section class="card">
-        <h2>tac0de ai</h2>
-        <p>
-          A “mastermind” architecture that treats control as a design problem.
-          It separates planning from execution, and keeps Deep mode optional.
+      <section id="top" class="hero" data-reveal>
+        <h1>Language models optimize fluent answers, not epistemic stability.</h1>
+        <p class="sub">
+          Current LLM interfaces rarely enforce reflection. They can produce confident
+          narratives without structural checks for counterfactual robustness.
         </p>
+        <div class="hero-grid">
+          <div class="hero-card">
+            <div class="kicker">Problem statement</div>
+            <ul class="mini">
+              <li>LLMs optimize for generating fluent answers.</li>
+              <li>They do not structurally enforce reflection or epistemic stability.</li>
+            </ul>
+          </div>
+          <div class="hero-card">
+            <div class="kicker">This page</div>
+            <ul class="mini">
+              <li>Defines a research problem.</li>
+              <li>Proposes a protocol with reproducible traces.</li>
+              <li>Static site: JSON artifacts only (no model calls).</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="problem" class="card" data-reveal>
+        <h2>Problem definition</h2>
         <ul>
-          <li>Default: fast mode (no deep trace, no extra latency)</li>
-          <li>Optional: Deep mode (structured trace only, no side effects)</li>
-          <li>Goal: support human thinking, not replace it</li>
+          <li><strong>Lack of enforced counterfactual reasoning</strong>: models can respond without proving sensitivity to alternative hypotheses.</li>
+          <li><strong>Confidence amplification without structural checks</strong>: fluent outputs can increase perceived certainty absent calibration signals.</li>
         </ul>
       </section>
 
-      <section class="card">
-        <h2>tac0de-cascade</h2>
-        <p>
-          A Deep Thinking protocol language for AI. Not a programming language
-          for execution, but a format that forces depth: contradiction checks,
-          counterfactuals, dignity/harm checks, and synthesis.
+      <section id="protocol" class="card" data-reveal>
+        <header class="card-head">
+          <h2>Proposal: tac0de Protocol</h2>
+          <span class="badge">tac0de-cascade</span>
+        </header>
+        <p class="sub">
+          One-line definition: a deterministic, structured reflection protocol that produces a
+          reproducible trace from a JSON input.
         </p>
 
-        <h3>Deep mode contract</h3>
+        <h3>Key properties</h3>
+        <ul class="mini">
+          <li>Deterministic</li>
+          <li>JSON in / JSON out</li>
+          <li>Optional Deep mode</li>
+          <li>No moral authority, no content filter</li>
+        </ul>
+      </section>
+
+      <section class="card" data-reveal>
+        <h2>Research directions</h2>
+        <ol>
+          <li>Does enforced trace structure improve factual correction under counterfactual perturbations compared to baseline chat prompting?</li>
+          <li>How stable are tac0de traces across repeated runs (same input) and across model families when the protocol is implemented as an external wrapper?</li>
+          <li>Does trace generation reduce confidence amplification (measured via calibration error and abstention quality) without reducing task performance?</li>
+          <li>What is the minimum trace schema complexity that yields measurable gains (ablation over trace fields and required checks)?</li>
+        </ol>
+      </section>
+
+      <section class="card" data-reveal>
+        <h2>Closing invitation</h2>
         <ul>
-          <li>Deep mode is OFF by default.</li>
+          <li>tac0de enforces structural reflection.</li>
+          <li>It does not define values.</li>
+          <li>Researchers are invited to implement and test.</li>
+        </ul>
+      </section>
+
+      <section id="trace" class="card trace" data-reveal>
+        <header class="card-head">
+          <h2>TRACE: reproducible artifacts</h2>
+          <div class="trace-meta">
+            <span class="badge" id="badge-static">static</span>
+            <span class="badge badge-dim" id="hash-input">input: sha256 …</span>
+            <span class="badge badge-dim" id="hash-trace">trace: sha256 …</span>
+          </div>
+        </header>
+
+        <div class="trace-actions">
+          <button class="btn" id="btn-reload" type="button">Reload JSON</button>
+          <button class="btn btn-ghost" id="btn-copy-input" type="button">Copy input</button>
+          <button class="btn btn-ghost" id="btn-copy-trace" type="button">Copy trace</button>
+        </div>
+
+        <div class="split">
+          <div class="pane">
+            <div class="pane-head">
+              <span class="kicker">Input (JSON)</span>
+              <span class="pill">JSON in</span>
+            </div>
+            <pre><code id="tac0de-input">Loading…</code></pre>
+          </div>
+          <div class="pane">
+            <div class="pane-head">
+              <span class="kicker">Output (Trace JSON)</span>
+              <span class="pill">JSON out</span>
+            </div>
+            <pre><code id="tac0de-trace">Loading…</code></pre>
+          </div>
+        </div>
+
+        <details class="details">
+          <summary>Run locally (generate a new trace)</summary>
+          <pre><code>./scripts/gen-tac0de-trace.sh</code></pre>
+          <p class="note">
+            This site is static. The trace shown above is pre-generated under <code>assets/tac0de/</code>.
+          </p>
+        </details>
+      </section>
+
+      <section id="links" class="card" data-reveal>
+        <h2>Helpful links</h2>
+        <ul class="mini">
           <li>
-            When ON: generate a Trace (structured JSON). No external actions.
+            <a href="https://github.com/tac0de/divineparadox/tree/main/tac0de-css" target="_blank" rel="noreferrer noopener">tac0de-css (GitHub)</a>
           </li>
-          <li>When OFF: do nothing extra (zero impact).</li>
+          <li>
+            <a href="https://github.com/tac0de/divineparadox/blob/main/README.md" target="_blank" rel="noreferrer noopener">README</a>
+            /
+            <a href="https://github.com/tac0de/divineparadox/blob/main/SPEC.md" target="_blank" rel="noreferrer noopener">spec</a>
+          </li>
+          <li><span class="muted">Note: this site is static (no server-side execution).</span></li>
         </ul>
-      </section>
-
-      <section class="card">
-        <h2>Example</h2>
-        <p class="muted">Input (JSON)</p>
-        <pre><code id="tac0de-input">Loading...</code></pre>
-
-        <p class="muted">Output (Trace JSON)</p>
-        <pre><code id="tac0de-trace">Loading...</code></pre>
-
-        <p class="note">
-          The trace is not a verdict. It is a scaffold for thinking.
-        </p>
       </section>
 
       <footer class="footer">
-        <p>© divine paradox. Built small on purpose.</p>
+        <p>© divineparadox. TRACE-first, static by design.</p>
       </footer>
     </main>
 
@@ -82,6 +168,12 @@
       (async () => {
         const inputEl = document.getElementById("tac0de-input");
         const traceEl = document.getElementById("tac0de-trace");
+        const hashInputEl = document.getElementById("hash-input");
+        const hashTraceEl = document.getElementById("hash-trace");
+
+        const btnReload = document.getElementById("btn-reload");
+        const btnCopyInput = document.getElementById("btn-copy-input");
+        const btnCopyTrace = document.getElementById("btn-copy-trace");
 
         async function loadText(path) {
           const res = await fetch(path, { cache: "no-store" });
@@ -89,15 +181,67 @@
           return await res.text();
         }
 
-        try {
-          inputEl.textContent = await loadText("assets/tac0de/example.input.json");
-          traceEl.textContent = await loadText("assets/tac0de/example.trace.json");
-        } catch (err) {
-          const msg =
-            "Failed to load tac0de assets. If you opened this file via file://, serve the folder over HTTP.";
-          inputEl.textContent = msg;
-          traceEl.textContent = String(err);
+        function prettyOrRaw(text) {
+          try {
+            const obj = JSON.parse(text);
+            return JSON.stringify(obj, null, 2);
+          } catch {
+            return text;
+          }
         }
+
+        async function sha256Hex(text) {
+          const enc = new TextEncoder();
+          const bytes = enc.encode(text);
+          const digest = await crypto.subtle.digest("SHA-256", bytes);
+          const arr = Array.from(new Uint8Array(digest));
+          return arr.map((b) => b.toString(16).padStart(2, "0")).join("");
+        }
+
+        async function refresh() {
+          try {
+            const inputRaw = await loadText("assets/tac0de/example.input.json");
+            const traceRaw = await loadText("assets/tac0de/example.trace.json");
+
+            const inputText = prettyOrRaw(inputRaw);
+            const traceText = prettyOrRaw(traceRaw);
+
+            inputEl.textContent = inputText;
+            traceEl.textContent = traceText;
+
+            const [hIn, hTr] = await Promise.all([sha256Hex(inputText), sha256Hex(traceText)]);
+            hashInputEl.textContent = `input: sha256 ${hIn.slice(0, 12)}`;
+            hashTraceEl.textContent = `trace: sha256 ${hTr.slice(0, 12)}`;
+          } catch (err) {
+            const msg =
+              "Failed to load tac0de assets. If you opened this file via file://, serve the folder over HTTP.";
+            inputEl.textContent = msg;
+            traceEl.textContent = String(err);
+            hashInputEl.textContent = "input: sha256 (unavailable)";
+            hashTraceEl.textContent = "trace: sha256 (unavailable)";
+          }
+        }
+
+        async function copyFrom(el) {
+          const text = el?.textContent || "";
+          await navigator.clipboard.writeText(text);
+        }
+
+        btnReload?.addEventListener("click", () => void refresh());
+        btnCopyInput?.addEventListener("click", () => void copyFrom(inputEl));
+        btnCopyTrace?.addEventListener("click", () => void copyFrom(traceEl));
+
+        // Lightweight reveal animation
+        const reveal = () => {
+          for (const el of document.querySelectorAll("[data-reveal]")) {
+            const r = el.getBoundingClientRect();
+            if (r.top < window.innerHeight - 80) el.classList.add("is-in");
+          }
+        };
+        window.addEventListener("scroll", reveal, { passive: true });
+        reveal();
+
+        await refresh();
       })();
     </script>
   </body>

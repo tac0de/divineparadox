@@ -1,16 +1,19 @@
 {
   "deep_mode": true,
-  "prompt": "A conflict happened. I feel grief and anger. What should I do next?",
+  "prompt": "GitHub Pages 'pages build and deployment' jobs sometimes show Cancelled (after ~17s) because a higher-priority build is waiting. As a maintainer, how should I interpret this and what minimal guardrails should I add so contributors are not confused?",
   "claims": [
-    "Separate goals, constraints, and values before selecting actions.",
-    "Prefer reversible, low-regret actions while emotions are high."
+    "Cancelled runs can be normal when concurrency keeps only the latest deployment.",
+    "CI signals should minimize contributor confusion and avoid blocking merges on non-failures.",
+    "Prefer small, reversible changes: document behavior and adjust required checks before reworking the pipeline."
   ],
   "assumptions": [
-    "Physical safety is not immediately at risk.",
-    "A follow-up conversation is possible but not required."
+    "At least one later Pages run completes successfully for the same branch.",
+    "We control repository settings and workflow configuration.",
+    "We want to keep GitHub Pages deployment lightweight."
   ],
   "open_questions": [
-    "What outcome is desired in 7 days versus 7 months?",
-    "What constraints (time, cost, safety, policy) must be satisfied?"
+    "Is any branch protection requiring the cancelled check run to pass?",
+    "Do we need to disable 'cancel-in-progress' or just document it?",
+    "Should we trigger Pages builds only on push to main, or also on manual dispatch?"
   ]
 }

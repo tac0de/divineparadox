@@ -10,9 +10,12 @@ if command -v tac0de-cascade >/dev/null 2>&1; then
   tac0de-cascade trace "$INPUT_JSON" > "$OUTPUT_JSON"
 elif [[ -n "${TAC0DE_CASCADE_MANIFEST:-}" ]]; then
   cargo run --quiet --manifest-path "$TAC0DE_CASCADE_MANIFEST" -- trace "$INPUT_JSON" > "$OUTPUT_JSON"
+elif command -v python3 >/dev/null 2>&1; then
+  python3 "$ROOT_DIR/scripts/tac0de_cascade.py" trace "$INPUT_JSON" > "$OUTPUT_JSON"
 else
   echo "tac0de-cascade not found on PATH." >&2
   echo "Install it, or set TAC0DE_CASCADE_MANIFEST to the Cargo.toml path for tac0de-cascade." >&2
+  echo "Alternatively, ensure python3 is available to use the local fallback generator." >&2
   exit 1
 fi
 
