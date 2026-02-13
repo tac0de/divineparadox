@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>divine paradox</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="wrap">
+      <header class="hero">
+        <h1>divine paradox</h1>
+        <p class="sub">
+          A quiet place for a simple idea: thinking should be deeper than
+          output. AI is not a moral authority. It is a mirror that helps humans
+          think.
+        </p>
+        <p class="sub">
+          Emotions are not bugs. Dignity is not optional. Conclusions can wait.
+        </p>
+        <div class="links">
+          <a href="#" aria-label="tac0de-cascade repository">tac0de-cascade</a>
+          <a href="#" aria-label="mastermind repository">mastermind</a>
+          <a href="#" aria-label="ethics">ETHICS</a>
+        </div>
+        <p class="note">
+          This project is reflection-first. It is not built to persuade,
+          manipulate, or control people.
+        </p>
+      </header>
+
+      <section class="card">
+        <h2>tac0de ai</h2>
+        <p>
+          A “mastermind” architecture that treats control as a design problem.
+          It separates planning from execution, and keeps Deep mode optional.
+        </p>
+        <ul>
+          <li>Default: fast mode (no deep trace, no extra latency)</li>
+          <li>Optional: Deep mode (structured trace only, no side effects)</li>
+          <li>Goal: support human thinking, not replace it</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>tac0de-cascade</h2>
+        <p>
+          A Deep Thinking protocol language for AI. Not a programming language
+          for execution, but a format that forces depth: contradiction checks,
+          counterfactuals, dignity/harm checks, and synthesis.
+        </p>
+
+        <h3>Deep mode contract</h3>
+        <ul>
+          <li>Deep mode is OFF by default.</li>
+          <li>
+            When ON: generate a Trace (structured JSON). No external actions.
+          </li>
+          <li>When OFF: do nothing extra (zero impact).</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Example</h2>
+        <p class="muted">Input (JSON)</p>
+        <pre><code id="tac0de-input">Loading...</code></pre>
+
+        <p class="muted">Output (Trace JSON)</p>
+        <pre><code id="tac0de-trace">Loading...</code></pre>
+
+        <p class="note">
+          The trace is not a verdict. It is a scaffold for thinking.
+        </p>
+      </section>
+
+      <footer class="footer">
+        <p>© divine paradox. Built small on purpose.</p>
+      </footer>
+    </main>
+
+    <script>
+      (async () => {
+        const inputEl = document.getElementById("tac0de-input");
+        const traceEl = document.getElementById("tac0de-trace");
+
+        async function loadText(path) {
+          const res = await fetch(path, { cache: "no-store" });
+          if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
+          return await res.text();
+        }
+
+        try {
+          inputEl.textContent = await loadText("assets/tac0de/example.input.json");
+          traceEl.textContent = await loadText("assets/tac0de/example.trace.json");
+        } catch (err) {
+          const msg =
+            "Failed to load tac0de assets. If you opened this file via file://, serve the folder over HTTP.";
+          inputEl.textContent = msg;
+          traceEl.textContent = String(err);
+        }
+      })();
+    </script>
+  </body>
+</html>

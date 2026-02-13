@@ -1,0 +1,46 @@
+{
+  "claims": [
+    "Separate goals, constraints, and values before selecting actions.",
+    "Prefer reversible, low-regret actions while emotions are high."
+  ],
+  "assumptions": [
+    "Physical safety is not immediately at risk.",
+    "A follow-up conversation is possible but not required."
+  ],
+  "contradiction_scan": {
+    "findings": [
+      "Possible contradiction: goals, constraints, and values may be interleaved; separate them explicitly."
+    ]
+  },
+  "bias_check": {
+    "notes": [
+      "Bias check: identify framing that privileges a default viewpoint; restate the prompt in neutral terms."
+    ]
+  },
+  "dignity_check": {
+    "notes": [
+      "Dignity check: describe stakeholders with agency and respect; avoid dehumanizing or stereotyping language."
+    ]
+  },
+  "harm_projection": {
+    "risks": [
+      "Harm projection: list plausible downstream harms (direct and indirect) if the chosen action is taken."
+    ]
+  },
+  "counterfactual": {
+    "opposite_position": "Opposite position: avoid synthesis and keep competing positions separate until constraints are clarified.",
+    "strongest_argument": "Strongest argument: premature synthesis can hide tradeoffs and increase the risk of avoidable harm."
+  },
+  "synthesis": {
+    "minimize_harm": "Minimize harm by validating constraints early, documenting uncertainties, and choosing the least irreversible steps.",
+    "preserve_dignity": "Preserve dignity by using respectful language, incorporating affected parties' perspectives, and avoiding coercive framing.",
+    "tradeoffs": [
+      "Speed vs. thoroughness",
+      "Strict validation vs. flexibility"
+    ]
+  },
+  "open_questions": [
+    "What outcome is desired in 7 days versus 7 months?",
+    "What constraints (time, cost, safety, policy) must be satisfied?"
+  ]
+}

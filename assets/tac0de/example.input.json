@@ -1,0 +1,16 @@
+{
+  "deep_mode": true,
+  "prompt": "A conflict happened. I feel grief and anger. What should I do next?",
+  "claims": [
+    "Separate goals, constraints, and values before selecting actions.",
+    "Prefer reversible, low-regret actions while emotions are high."
+  ],
+  "assumptions": [
+    "Physical safety is not immediately at risk.",
+    "A follow-up conversation is possible but not required."
+  ],
+  "open_questions": [
+    "What outcome is desired in 7 days versus 7 months?",
+    "What constraints (time, cost, safety, policy) must be satisfied?"
+  ]
+}
