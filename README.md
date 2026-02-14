@@ -33,3 +33,16 @@ View locally (required for `fetch()` to work):
 ```bash
 python3 -m http.server 8000
 ```
+
+## Optional: OpenAI via GCP bridge (no OpenAI key in Netlify)
+If you want to call OpenAI without storing `OPENAI_API_KEY` in Netlify, you can:
+- deploy a bridge on GCP Cloud Run (stores `OPENAI_API_KEY` in GCP Secret Manager),
+- keep only a short `DEPLOY_TOKEN` in Netlify env vars,
+- forward requests from a Netlify Function to the GCP bridge.
+
+Netlify env vars:
+- `OPENAI_BRIDGE_URL` = your Cloud Run base URL (example: `https://openai-bridge-xxxxx-<region>.a.run.app`)
+- `DEPLOY_TOKEN` = the shared Bearer token used to call the bridge
+
+Netlify function:
+- `POST /.netlify/functions/openai_responses` forwards to `${OPENAI_BRIDGE_URL}/v1/responses`.
